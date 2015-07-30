@@ -143,16 +143,16 @@ var t = {
 
 	resizeEnd: function() {
 
-	    if (new Date() - t.global.r.rTime < t.global.r.delta) {
+		if (new Date() - t.global.r.rTime < t.global.r.delta) {
 
-	        setTimeout(t.resizeEnd, t.global.r.delta);
+			setTimeout(t.resizeEnd, t.global.r.delta);
 
-	    } else {
+		} else {
 
-	        t.global.r.timeout = false;
+			t.global.r.timeout = false;
 			t.update();
 
-	    }
+		}
 
 	},
 
@@ -276,9 +276,9 @@ var t = {
 		$("#zoom").slider({
 
 			value: t.global.zoom,
-		    min: 7,
-		    max: 16,
-		    step: 1,
+			min: 7,
+			max: 16,
+			step: 1,
 
 		});
 
@@ -401,7 +401,7 @@ var t = {
 					dataType: "json"
 
 				});
-	      		
+			
 			});
 
 		}
@@ -445,20 +445,20 @@ var t = {
 		// somehow this all draws a doughnut shaped pie chart:
 
 		t.global.ctx.beginPath();
-        t.global.ctx.strokeStyle = "rgba(0, 0, 0, 0)";
-        t.global.ctx.lineWidth = 15;
-        t.global.ctx.arc(x, y, 5, 0, 2 * Math.PI);
-        t.global.ctx.stroke();
+		t.global.ctx.strokeStyle = "rgba(0, 0, 0, 0)";
+		t.global.ctx.lineWidth = 15;
+		t.global.ctx.arc(x, y, 5, 0, 2 * Math.PI);
+		t.global.ctx.stroke();
 
 		t.global.ctx.beginPath();
 		t.global.ctx.strokeStyle = "#00FF00";
-      	t.global.ctx.arc(x, y, 20, (3/2) * Math.PI, Math.PI * ((3/2) + 2 * ratio), false);
-      	t.global.ctx.stroke();
+		t.global.ctx.arc(x, y, 20, (3/2) * Math.PI, Math.PI * ((3/2) + 2 * ratio), false);
+		t.global.ctx.stroke();
 
-      	t.global.ctx.beginPath();
-      	t.global.ctx.strokeStyle = "#FF0000";
-      	t.global.ctx.arc(x, y, 20, Math.PI * ((3/2) + 2 * ratio), Math.PI * (3/2), false);
-      	t.global.ctx.stroke();
+		t.global.ctx.beginPath();
+		t.global.ctx.strokeStyle = "#FF0000";
+		t.global.ctx.arc(x, y, 20, Math.PI * ((3/2) + 2 * ratio), Math.PI * (3/2), false);
+		t.global.ctx.stroke();
 
 	},
 
@@ -488,45 +488,45 @@ var t = {
 				// pie isn't highlighted (mouse over)
 
 				t.global.ctx.beginPath();
-	        	t.global.ctx.strokeStyle = "rgba(0, 0, 0, 0)";
-	        	t.global.ctx.lineWidth = 15;
-	        	t.global.ctx.arc(x, y, 5, 0, 2 * Math.PI);
-	       		t.global.ctx.stroke();
+				t.global.ctx.strokeStyle = "rgba(0, 0, 0, 0)";
+				t.global.ctx.lineWidth = 15;
+				t.global.ctx.arc(x, y, 5, 0, 2 * Math.PI);
+				t.global.ctx.stroke();
 
 				t.global.ctx.beginPath();
 				t.global.ctx.strokeStyle = "#00FF00";
-		      	t.global.ctx.arc(x, y, 20, (3/2) * Math.PI, Math.PI * ((3/2) + 2 * ratio), false);
-		      	t.global.ctx.stroke();
+				t.global.ctx.arc(x, y, 20, (3/2) * Math.PI, Math.PI * ((3/2) + 2 * ratio), false);
+				t.global.ctx.stroke();
 
-		      	t.global.ctx.beginPath();
-		      	t.global.ctx.strokeStyle = "#FF0000";
-		      	t.global.ctx.arc(x, y, 20, Math.PI * ((3/2) + 2 * ratio), Math.PI * (3/2), false);
-		      	t.global.ctx.stroke();
+				t.global.ctx.beginPath();
+				t.global.ctx.strokeStyle = "#FF0000";
+				t.global.ctx.arc(x, y, 20, Math.PI * ((3/2) + 2 * ratio), Math.PI * (3/2), false);
+				t.global.ctx.stroke();
 
-		    } else {
+			} else {
 
-		    	// pie to be drawn bigger
-		    	// also add name and ratio data
+				// pie to be drawn bigger
+				// also add name and ratio data
 
-		    	t.global.ctx.beginPath();
-	        	t.global.ctx.strokeStyle = "rgba(0, 0, 0, 0)";
-	        	t.global.ctx.lineWidth = 30;
-	        	t.global.ctx.arc(x, y, 5, 0, 2 * Math.PI);
-	       		t.global.ctx.stroke();
+				t.global.ctx.beginPath();
+				t.global.ctx.strokeStyle = "rgba(0, 0, 0, 0)";
+				t.global.ctx.lineWidth = 30;
+				t.global.ctx.arc(x, y, 5, 0, 2 * Math.PI);
+				t.global.ctx.stroke();
 
 				t.global.ctx.beginPath();
 				t.global.ctx.strokeStyle = "#00FF00";
-		      	t.global.ctx.arc(x, y, 30, (3/2) * Math.PI, Math.PI * ((3/2) + 2 * ratio), false);
-		      	t.global.ctx.stroke();
+				t.global.ctx.arc(x, y, 30, (3/2) * Math.PI, Math.PI * ((3/2) + 2 * ratio), false);
+				t.global.ctx.stroke();
 
-		      	t.global.ctx.beginPath();
-		      	t.global.ctx.strokeStyle = "#FF0000";
-		      	t.global.ctx.arc(x, y, 30, Math.PI * ((3/2) + 2 * ratio), Math.PI * (3/2), false);
-		      	t.global.ctx.stroke();
+				t.global.ctx.beginPath();
+				t.global.ctx.strokeStyle = "#FF0000";
+				t.global.ctx.arc(x, y, 30, Math.PI * ((3/2) + 2 * ratio), Math.PI * (3/2), false);
+				t.global.ctx.stroke();
 
 				t.drawLines();
 
-		    }
+			}
 
 		});
 
