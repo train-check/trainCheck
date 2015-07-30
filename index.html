@@ -1,0 +1,83 @@
+<html>
+
+	<head>
+
+		<title>Festival of Code 2015</title>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQrz8GmD46Y7P4aJ1eS6aoRYm0fNWoUHU"></script>
+
+		<link href='http://fonts.googleapis.com/css?family=Raleway:500,600,400,300' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="app.css"/>
+
+	</head>
+
+	<body>
+
+		<div id="map"></div>
+
+		<canvas id="chart"></canvas>
+
+		<div id="showGui" align="center">
+
+			<div id="showGuiIcon"></div>
+			
+		</div>
+
+		<div id="gui">
+
+			<div id="mapType" align="center">
+
+				<div id="roadmap" class="mapTypeButton" align="center">roadmap</div>
+				<div id="hybrid" class="mapTypeButton active" align="center">hybrid</div>
+				<div id="satellite" class="mapTypeButton" align="center">satellite</div>
+
+			</div>
+
+			<div id="locationStuff" align="center">
+
+				<input id="location" type="text" placeholder=" enter an address or geo-coordinates"></input>
+				<div id="updateLocation" align="center">go</div>
+
+			</div>
+
+			<div id="zoomStuff">
+
+				<div id="zoom"></div>
+				<div id="updateZoom" align="center">update</div>
+
+			</div>
+
+			<div id="closeGui" align="center">
+
+				<div id="closeGuiIcon"></div>
+				
+			</div>
+
+		</div>
+
+		<div id="noTrains" align="center">
+
+			There are no train stations in the viewed area.
+				<br><br>
+			Zoom out to find stations a bit further away from you.
+
+		</div>
+
+		<div id="orientWarn" align="center">
+
+			You are using the app in portrait mode.
+				<br><br>
+			Consider using it in landscape for a much better experience.
+
+		</div>
+
+
+		<script src="app.js"></script>
+
+	</body>
+
+</html>
