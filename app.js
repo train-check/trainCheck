@@ -177,6 +177,15 @@ var t = {
 
 			});
 
+			$("#closeDetailIcon").on("tap", function(e) {
+
+				$("#detail").hide();
+				$("#phone").hide();
+
+				t.global.detail = false;
+
+			});
+
 			$("#phoneSend").on("tap", function(e) {
 
 				t.phoneSend($(this));
@@ -263,6 +272,15 @@ var t = {
 			})
 
 			$("#closeDetail").click(function(e) {
+
+				$("#detail").hide();
+				$("#phone").hide();
+
+				t.global.detail = false;
+
+			});
+
+			$("#closeDetailIcon").click(function(e) {
 
 				$("#detail").hide();
 				$("#phone").hide();
@@ -807,38 +825,62 @@ var t = {
 
 		}
 
-		// console.log(t.global.hot[t.global.activePie].lines);
+		// console.log(t.global.hot[t.global.activePie].lines[0].length);
 
-		$.each(t.global.hot[t.global.activePie].lines, function(i, line) {
+		if (t.global.hot[t.global.activePie].lines[0].length) {
 
-			// console.log(line);
+			$.each(t.global.hot[t.global.activePie].lines, function(i, line) {
 
-			place = line[0].replace(" ", "+") + "+train+station,UK"; // this seems to be consistent in finding the train stations
+				// console.log(line);
 
-			$.ajax({
+				place = line[0].replace(" ", "+") + "+train+station,UK"; // this seems to be consistent in finding the train stations
 
-				url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + place, // + "&key=" + t.global.gApiKey + ""
-				success: function(d) {
+				$.ajax({
 
-						// console.log(d); // some results might be coming back undefined (some are)
+					url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + place, // + "&key=" + t.global.gApiKey + ""
+					success: function(d) {
 
-						if (d.results[0]) {
+							// console.log(d); // some results might be coming back undefined (some are)
 
-							x = w * (d.results[0].geometry.location.lng - t.global.bounds.w) / t.global.bounds.dx;
-							y = h * (t.global.bounds.n - d.results[0].geometry.location.lat) / t.global.bounds.dy + dy;
-							
-							// console.log(t.global.hot[t.global.activePie]);
+							if (d.results[0]) {
 
-							t.drawLine(t.global.hot[t.global.activePie].screenX, t.global.hot[t.global.activePie].screenY, x, y, line[1], i);
+								x = w * (d.results[0].geometry.location.lng - t.global.bounds.w) / t.global.bounds.dx;
+								y = h * (t.global.bounds.n - d.results[0].geometry.location.lat) / t.global.bounds.dy + dy;
+								
+								// console.log(t.global.hot[t.global.activePie]);
 
-						}
+								t.drawLine(t.global.hot[t.global.activePie].screenX, t.global.hot[t.global.activePie].screenY, x, y, line[1], i);
 
-					},
-				dataType: "json"
+							}
+
+						},
+					dataType: "json"
+
+				});
 
 			});
 
-		});
+		} else {
+
+			// need to draw text on top of enlarged donut anyway
+
+			console.log("no lines");
+
+			var pie = t.global.hot[t.global.activePie];
+
+			t.global.ctx.font = "bold 25px Raleway";
+			t.global.ctx.strokeStyle = "#000000";
+			t.global.ctx.lineWidth = 4;
+			t.global.ctx.strokeText(pie.name, pie.screenX + 5, pie.screenY - 20);
+			t.global.ctx.fillStyle = "#FFFFFF";
+			t.global.ctx.fillText(pie.name, pie.screenX + 5, pie.screenY - 20);
+
+			var r = Math.round(pie.rat * 100, 0) + "%";
+
+			t.global.ctx.strokeText(r, pie.screenX + 5, pie.screenY + 10);
+			t.global.ctx.fillText(r, pie.screenX + 5, pie.screenY + 10);
+
+		}
 
 	},
 
