@@ -33,9 +33,11 @@
 	$sql = "INSERT INTO trainCheck (phone_number, station_code, train_uid, time)
 	VALUES ('".$number."', '".$code."', '".$uid."', '".$time."')";
 
-	$message = "Hi, you requested updates for the $time departure from $station.  The service is currently running with $percent of trains on time, and your train is due $delta minutes after intended.";
+	$message1 = "Hi, you requested updates for the $time departure from $station.";
+	$message2 = "The service is currently running with $percent of trains on time, and your train is due $delta minutes from now.";
 
-	$sms = $client->account->sms_messages->create($from, $number, $message);
+	$sms1 = $client->account->sms_messages->create($from, $number, $message1);
+	$sms2 = $client->account->sms_messages->create($from, $number, $message2);
 
 	$connection->close();
 
